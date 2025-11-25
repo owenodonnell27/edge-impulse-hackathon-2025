@@ -9,6 +9,7 @@ The data collection process consisted of driving to a local parking lot and taki
 The labeling process consisted of drawing the bounding boxes around each parking spot and labeling the box open if there was no car in the spot or used if there was a car there. 
 
 **Example of image used for training:**
+
 ![Image part of the training dataset](training-ex.png)
 
 ### Model Training
@@ -19,7 +20,8 @@ In the `Image` tab, grayscale was chosen for color depth. This was chosen over R
 
 Finally, in the `Object Detection` tab, the finaly parameters and set and model training begins. For training this model, the number of training cycles was 100, the learning rate was 0.001, the CPU was used as the training processor, and data augmentation was enabled.
 
-**Training Results**
+**Training Results:**
+
 ![alt text](training-results.png)
 
 ### Application Development
