@@ -41,7 +41,7 @@ double threshold = 0.7;                 // Detection threshold
  */
 void setup() {
 
-  std::string deviceId("HWKEYE01"); // MUST be 8 bytes and unique from other ducks
+  std::string deviceId("PRKMAMA1"); // MUST be 8 bytes and unique from other ducks
   std::array<byte,8> devId;
   std::copy(deviceId.begin(), deviceId.end(), devId.begin());
   if (duck.setupWithDefaults(devId) != DUCK_ERR_NONE) {
@@ -78,9 +78,6 @@ void loop() {
     Serial.println(data.c_str());
     
     if (data.find("spots") != std::string::npos) {
-      // std::string message = "audio:speech_detected";
-      // Serial.print("[MAMA] Received data: ");
-      // Serial.println(message.c_str());
       sendData(data, topics::sensor);
     } else {
       Serial.println("[MAMA] Spots not found in data");
