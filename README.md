@@ -33,4 +33,6 @@ Finally, in the `Object Detection` tab, the last parameters and set and model tr
 
 ### Application Development
 
+The applicaiton development starts with flashing a version of Raspberry Pi OS to an SD that will be used by our Raspberry Pi. Once the Pi is powered on we SSH into its terminal, we install the [Edge Impulse Linux CLI](https://docs.edgeimpulse.com/tools/clis/edge-impulse-linux-cli#edge-impulse-linux).
+
 ## Project Demonstration
