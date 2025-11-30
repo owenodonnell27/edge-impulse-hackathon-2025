@@ -35,11 +35,19 @@ Finally, in the `Object Detection` tab, the last parameters and set and model tr
 
 The applicaiton development starts with flashing a version of Raspberry Pi OS to an SD that will be used by our Raspberry Pi. Once the Pi is powered on we SSH into its terminal, we install the [Edge Impulse Linux CLI](https://docs.edgeimpulse.com/tools/clis/edge-impulse-linux-cli#edge-impulse-linux), and downloaded the model to the Raspberry Pi. 
 
-We also set up Ducks. Ducks are IoT devices that communicate with other Ducks using an open source LoRa radio protocol called [ClusterDuck Protocol](https://clusterduckprotocol.org/). One of the Ducks is called MamaDuck. The MamaDuck is connected to the Rasberry Pi and will relay parking availability from the Raspberry Pi to the mesh network. The other Duck is called PapaDuck. The PapaDuck is the gateway device that relays any data from the network to the cloud. The PapaDuck is flashed using Duck Management System (DMS) and for the Mama Duck it is flashed using a custom `.ino` file. We also built a web dashboard using Streamlit. Once all the boards are flashed and set up, the pipeline will be: 
-1. The Raspberry Pi will run the Edge Impulse model with the connected Raspberry Pi Camera.
-2. When the Pi detects an open parking spot, it will send a message using UART to the MamaDuck T-Beam that is hardwired to it.
-3. The MamaDuck will then send a packet using LoRa to the PapaDuck T-Beam.
-4. The PapaDuck will push that data to the cloud.
-5. Our Streamlit web app will make an API call that will update the page with the latest information.
+The applicaiton development starts with flashing a version of Raspberry Pi OS to an SD that will be used by our Raspberry Pi. Once the Pi is powered on we SSH into its terminal, we install the [Edge Impulse Linux CLI](https://docs.edgeimpulse.com/tools/clis/edge-impulse-linux-cli#edge-impulse-linux), and downloaded the model to the Raspberry Pi. The Linux CLI will be used to run the model and then pipeline the output into a python file that will parse the output and send the number of open spots to the web app. This is done by using the command: `edge-impulse-linux-runner --model-file hackathon_2025-linux-aarch64-v2.eim | python main.py` 
+
+We incorporated the [ClusterDuck Protocol](https://clusterduckprotocol.org/), an open source LoRa radio protocol that allows IoT devices to communicate with each other. We used a esp32 board called T-Beam to make a MamaDuck and PapaDuck. The MamaDuck relays data in a mesh network. The PapaDuck takes the data from the mesh network and pushes it up to the cloud. For the Papa Duck, it is flashed using Duck Management System (DMS) and for the Mama Duck it is flashed using a custom `.ino` file and PlatformIO.  We also developed a web app using Streamlit. 
+
+Once all the boards are flashed and set up, the complete pipeline is: 
+1. The Raspberry Pi will run the Edge Impulse model using the Raspberry Pi Camera.
+2. When the Pi detects an open parking spot, it will send a message using UART to the Mama Duck T-Beam that is hardwired to it.
+3. The MamaDuck will then send any parking availability using LoRa into the mesh network.
+4. The PapaDuck will push any data from the mesh network into the cloud.
+5. The Streamlit web app will make an API call that will extract the data and update the page with the latest information.
 
 ## Project Demonstration
+
+<img alt="Raspberry Pi Inference Example" src="https://github.com/user-attachments/assets/8019e381-7d3a-470a-99cc-41c448989242" />
+
+[Video Demonstration/Skit](https://youtu.be/9GSTWffmle4)
