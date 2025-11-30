@@ -46,3 +46,7 @@ Once all the boards are flashed and set up, the complete pipeline is:
 5. Our web app will make an API call that will update the page with the latest information.
 
 ## Project Demonstration
+
+<img alt="Raspberry Pi Inference Example" src="https://github.com/user-attachments/assets/8019e381-7d3a-470a-99cc-41c448989242" />
+
+[Video Demonstration/Skit](https://youtu.be/9GSTWffmle4)
