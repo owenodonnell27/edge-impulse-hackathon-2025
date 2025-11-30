@@ -1,5 +1,12 @@
 # Edge Impulse Hackathon 2025
 
+## ISpot
+Every driver knows the frustration of circling a parking lot, hunting for a spot, only to watch someone else swerve in and steal it. What if you knew exactly where open spots were before you even entered the lot?
+
+iSpot detects open parking spaces in real-time and shows users exactly where and how many spots are available. No more endless loops.
+
+How? We deploy low-cost edge devices—Raspberry Pi cameras running machine learning that detect open spots and relay that data over a mesh network (ClusterDuck Protocol) to a live dashboard. Users see availability before they arrive, and head straight to an open space.
+
 ## Development Process
 
 ### Data Collection
