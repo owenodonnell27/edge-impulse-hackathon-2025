@@ -41,7 +41,7 @@ double threshold = 0.7;                 // Detection threshold
  */
 void setup() {
 
-  std::string deviceId("FQGWNQHS"); // MUST be 8 bytes and unique from other ducks
+  std::string deviceId("PRKMAMA1"); // MUST be 8 bytes and unique from other ducks
   std::array<byte,8> devId;
   std::copy(deviceId.begin(), deviceId.end(), devId.begin());
   if (duck.setupWithDefaults(devId) != DUCK_ERR_NONE) {
@@ -76,10 +76,9 @@ void loop() {
     std::string data = Serial2.readStringUntil('\n').c_str(); 
     Serial.print("[MAMA] RAW Data: ");
     Serial.println(data.c_str());
-
+    
     if (data.find("spots") != std::string::npos) {
       sendData(data, topics::sensor);
-      
     } else {
       Serial.println("[MAMA] Spots not found in data");
     }
