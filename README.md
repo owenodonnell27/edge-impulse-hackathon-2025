@@ -11,7 +11,7 @@ How? We deploy low-cost edge devices—Raspberry Pi cameras running machine lear
 
 ### Data Collection
 
-For this project, the dataset was collected ourselves. The data collection process consisted of driving to a local parking lot and taking images of a car in a spot as well as some surrounding empty spots. 134 images were taken total with 208 instances of open parking spaces and 107 instances of used parking spaces. Ideally these numbers should be closer in value. However, out of respect of not using random people's cars as part of the dataset, just personal vehicles were used. The amount and diversity of data would also ideally be greater than 134 images with 315 objects. However, due to the free tier of Edge Impulse restricting training time to one hour, we felt that getting a lot of simple data would be a great proof of concept.  
+For this project, the dataset was collected ourselves. The data collection process consisted of driving to a local parking lot and taking images of a car in a spot as well as some surrounding empty spots. 134 images were taken total with 208 instances of open parking spaces and 107 instances of used parking spaces. Ideally these numbers should be closer in value. However, out of respect of not using random people's cars as part of the dataset, just personal vehicles were used. The amount and diversity of data would also ideally be greater than 134 images with 315 objects. However, due to the free tier of Edge Impulse restricting training time to one hour, we felt that getting a lot of simple data would be a great proof of concept. With more time and resources, collecting images with different lighting, different cars, and different angles would improve the model performance. 
 
 The labeling process consisted of drawing the bounding boxes around each parking spot and labeling the box open if there was no car in the spot or used if there was a car there. 
 
@@ -52,12 +52,8 @@ Once all the boards are flashed and set up, the complete pipeline is:
 
 ![Raspberry Pi Inference Example](inference-ex.png)
 
+**Web App Preview:**
+
+![Web App](web-app.png)
+
 [Video demonstation](https://youtu.be/yrMXqR6eSiM)
-
-## Project Expansions:
-
-A few project expansions that would improve the quality of this project would be:
-
-1. Increase the number of training images collected and used.
-2. Collect the training images on the Raspberry Pi Camera instead of a telephone.
-3. Have more diverse training data.
