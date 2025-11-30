@@ -48,6 +48,8 @@ Once all the boards are flashed and set up, the complete pipeline is:
 
 ## Project Demonstration
 
+[Video demonstation](https://youtu.be/yrMXqR6eSiM) showing how the solution solves its porblem and the model running on IoT hardware. 
+
 **Raspberry Pi Inference Example:**
 
 ![Raspberry Pi Inference Example](inference-ex.png)
@@ -55,5 +57,3 @@ Once all the boards are flashed and set up, the complete pipeline is:
 **Web App Preview:**
 
 ![Web App](web-app.png)
-
-[Video demonstation](https://youtu.be/yrMXqR6eSiM)
