@@ -21,7 +21,7 @@ The labeling process consisted of drawing the bounding boxes around each parking
 
 ### Model Training
 
-Model training started in the `Create Impulse` tab of Edge Impulse. Here the image size was defined at 256 x 256 pixels and the image processing and object detection blocks were added to the impulse. 
+Model training started in the `Create Impulse` tab of Edge Impulse. Here the image size was defined at 256x256 pixels and the image processing and object detection blocks were added to the impulse. 
 
 In the `Image` tab, grayscale was chosen for color depth. This was chosen over RGB because for this problem, the image features are going to determine if a parking spot is open or used. The color of the image is useless for this. After saving image parameters and running the feature generator, it is time to start model training. 
 
@@ -33,12 +33,13 @@ Finally, in the `Object Detection` tab, the last parameters and set and model tr
 
 ### Application Development
 
+The applicaiton development starts with flashing a version of Raspberry Pi OS to an SD that will be used by our Raspberry Pi. Once the Pi is powered on we SSH into its terminal, we install the [Edge Impulse Linux CLI](https://docs.edgeimpulse.com/tools/clis/edge-impulse-linux-cli#edge-impulse-linux), and downloaded the model to the Raspberry Pi. 
 
-The applicaiton development starts with flashing a version of Raspberry Pi OS to an SD that will be used by our Raspberry Pi. Once the Pi is powered on we SSH into its terminal, we install the [Edge Impulse Linux CLI](https://docs.edgeimpulse.com/tools/clis/edge-impulse-linux-cli#edge-impulse-linux), and downloaded the model to the Raspberry Pi. We also set up the T-Beams to be our Papa and Mama Ducks that will be used in our project that will be used to send data to the web app. For the Papa Duck, it is flashed using Duck Management System (DMS) and for the Mama Duck it is flashed using a custom .ino file. Once all the boards are flashed and set up, the pipeline will be: 
+We also set up Ducks. Ducks are IoT devices that communicate with other Ducks using an open source LoRa radio protocol called [ClusterDuck Protocol](https://clusterduckprotocol.org/). One of the Ducks is called MamaDuck. The MamaDuck is connected to the Rasberry Pi and will relay parking availability from the Raspberry Pi to the mesh network. The other Duck is called PapaDuck. The PapaDuck is the gateway device that relays any data from the network to the cloud. The PapaDuck is flashed using Duck Management System (DMS) and for the Mama Duck it is flashed using a custom `.ino` file. We also built a web dashboard using Streamlit. Once all the boards are flashed and set up, the pipeline will be: 
 1. The Raspberry Pi will run the Edge Impulse model with the connected Raspberry Pi Camera.
-2. When the Pi detects an open parking spot, it will send a message using UART to the Mama Duck T-Beam that is hardwired to it.
-3. The Mama Duck will then send a packet using LoRa to the Papa Duck T-Beam.
-4. The Papa Duck will relay that packet back to DMS.
-5. Our web app will make an API call that will update the page with the latest information.
+2. When the Pi detects an open parking spot, it will send a message using UART to the MamaDuck T-Beam that is hardwired to it.
+3. The MamaDuck will then send a packet using LoRa to the PapaDuck T-Beam.
+4. The PapaDuck will push that data to the cloud.
+5. Our Streamlit web app will make an API call that will update the page with the latest information.
 
 ## Project Demonstration
